@@ -29,7 +29,6 @@ function useCanvasReveal(canvasRef, topSrc, bottomSrc) {
     const loadImg = (src) =>
       new Promise((res) => {
         const img = new Image();
-        img.crossOrigin = 'anonymous';
         img.onload = () => res(img);
         img.onerror = () => res(null);
         img.src = src;
