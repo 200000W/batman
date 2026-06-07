@@ -136,7 +136,7 @@ export default function Gallery() {
               {/* Character Image */}
               <div className="dossier__image-wrap">
                 <img
-                  src={dossier.image}
+                  src={`${import.meta.env.BASE_URL}${dossier.image.replace(/^\//, '')}`}
                   alt={dossier.name}
                   className="dossier__image"
                   loading="lazy"

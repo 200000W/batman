@@ -183,7 +183,11 @@ const lineExpand = {
 /* ─── component ─── */
 export default function Hero() {
   const canvasRef = useRef(null);
-  useCanvasReveal(canvasRef, '/images/nolan_hero.png', '/images/gotham_city.png');
+  useCanvasReveal(
+    canvasRef,
+    `${import.meta.env.BASE_URL}images/nolan_hero.png`,
+    `${import.meta.env.BASE_URL}images/gotham_city.png`
+  );
 
   return (
     <section className="hero" id="hero">
