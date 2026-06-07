@@ -1,0 +1,386 @@
+/* ============================================
+   GALLERY — Batcave Database / Dark Knight Files
+   ============================================ */
+
+.gallery {
+  position: relative;
+  background: var(--gotham-dark);
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* ── Batcave ambient overlay ── */
+.gallery__cave-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    /* rocky ceiling gradient */
+    radial-gradient(ellipse 100% 30% at 50% -5%, rgba(10, 13, 18, 0.95) 0%, transparent 70%),
+    /* subtle blue ambient from "monitors" */
+    radial-gradient(ellipse 40% 50% at 20% 60%, rgba(74, 127, 165, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 40% at 80% 40%, rgba(74, 127, 165, 0.04) 0%, transparent 60%),
+    /* warm amber glow from below — like lava/light */
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgba(201, 148, 74, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Stalactite-style top edge ── */
+.gallery__stalactites {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background:
+    linear-gradient(180deg, var(--abyss) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gallery__stalactites::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--steel) 15%,
+    var(--nolan-blue-dim) 30%,
+    var(--nolan-blue) 50%,
+    var(--nolan-blue-dim) 70%,
+    var(--steel) 85%,
+    transparent 100%
+  );
+  opacity: 0.5;
+}
+
+.gallery__inner {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  z-index: 2;
+}
+
+/* ── Header ── */
+
+.gallery__header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.gallery__bat-icon {
+  display: block;
+  width: 48px;
+  height: auto;
+  margin: 0 auto 20px;
+  color: var(--amber);
+  opacity: 0.35;
+}
+
+.gallery__eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 16px;
+  position: relative;
+  padding: 0 2em;
+}
+
+.gallery__eyebrow::before,
+.gallery__eyebrow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 1.2em;
+  height: 1px;
+  background: var(--amber);
+  opacity: 0.4;
+}
+.gallery__eyebrow::before { left: 0; }
+.gallery__eyebrow::after { right: 0; }
+
+.gallery__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--text-primary);
+  letter-spacing: 0.14em;
+  line-height: 1.15;
+  margin: 0 0 16px;
+}
+
+.gallery__subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 460px;
+  margin: 0 auto 20px;
+}
+
+.gallery__title-line {
+  width: 80px;
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--nolan-blue) 50%,
+    transparent
+  );
+}
+
+/* ── Grid ── */
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ── Dossier Card ── */
+
+.dossier {
+  position: relative;
+  background: linear-gradient(
+    165deg,
+    var(--gotham-mid) 0%,
+    var(--gotham-dark) 100%
+  );
+  border: 1px solid var(--steel);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: default;
+  transition:
+    border-color 0.4s var(--ease-out),
+    transform 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out);
+}
+
+.dossier:hover {
+  border-color: var(--nolan-blue);
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(74, 127, 165, 0.08),
+    inset 0 0 30px rgba(74, 127, 165, 0.03);
+}
+
+/* ── Character Image ── */
+
+.dossier__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--void);
+}
+
+.dossier__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.6) contrast(1.1);
+  transition: filter 0.5s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.dossier:hover .dossier__image {
+  filter: saturate(0.85) contrast(1.15);
+  transform: scale(1.05);
+}
+
+/* Dark gradient over image bottom */
+.dossier__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    var(--gotham-mid) 0%,
+    rgba(22, 27, 34, 0.4) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Status badge */
+.dossier__status {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 1px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--steel);
+  color: var(--text-secondary);
+}
+
+.dossier__status--active {
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+.dossier__status--arkham {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+.dossier__status--deceased {
+  color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dossier__status--neutralized {
+  color: var(--nolan-blue);
+  border-color: var(--nolan-blue-dim);
+}
+
+.dossier__status--at-large {
+  color: var(--amber);
+  border-color: var(--amber-dim);
+}
+
+/* Scan lines — CRT / Batcomputer feel */
+.dossier__scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+/* ── Accent line ── */
+
+.dossier__accent {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--nolan-blue-dim),
+    var(--nolan-blue),
+    var(--nolan-blue-dim)
+  );
+  opacity: 0.3;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.dossier:hover .dossier__accent {
+  opacity: 1;
+}
+
+/* ── Card Content ── */
+
+.dossier__content {
+  padding: 24px 24px 18px;
+  flex: 1;
+}
+
+.dossier__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.dossier__index {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.dossier__divider {
+  width: 16px;
+  height: 1px;
+  background: var(--steel);
+  flex-shrink: 0;
+}
+
+.dossier__alias {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.dossier__name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.dossier__description {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.dossier__footer-line {
+  height: 1px;
+  margin: 0 24px 18px;
+  background: linear-gradient(
+    90deg,
+    var(--steel) 0%,
+    transparent 100%
+  );
+  opacity: 0.25;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 960px) {
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .gallery {
+    padding: 90px 0;
+  }
+}
+
+@media (max-width: 580px) {
+  .gallery__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .gallery {
+    padding: 60px 0;
+  }
+  .gallery__header {
+    margin-bottom: 48px;
+  }
+  .dossier__content {
+    padding: 20px 20px 14px;
+  }
+}

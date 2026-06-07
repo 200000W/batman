@@ -1,0 +1,123 @@
+/* ============================================
+   FOOTER — The Dark Knight
+   ============================================ */
+
+.footer {
+  position: relative;
+  background: var(--void);
+  padding: 0;
+}
+
+/* Top gradient divider */
+.footer__divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--steel) 20%,
+    var(--nolan-blue) 50%,
+    var(--steel) 80%,
+    transparent 100%
+  );
+  opacity: 0.5;
+}
+
+.footer__inner {
+  padding: 60px 2rem 40px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Bat icon */
+.footer__bat {
+  display: block;
+  width: 36px;
+  height: auto;
+  margin: 0 auto 24px;
+  color: var(--amber);
+  opacity: 0.25;
+}
+
+/* Logo text */
+.footer__logo {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--text-primary);
+  letter-spacing: 0.2em;
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+/* Nolan subtitle */
+.footer__subtitle {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin: 0 0 20px;
+}
+
+/* Location / era */
+.footer__location {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin: 0 0 28px;
+}
+
+/* Small decorative line */
+.footer__line {
+  width: 40px;
+  height: 1px;
+  background: var(--steel);
+  margin: 0 auto 28px;
+  opacity: 0.4;
+}
+
+/* Copyright / disclaimer */
+.footer__copyright {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  opacity: 0.6;
+  margin: 0 0 32px;
+}
+
+/* ── Developer credit tag ── */
+
+.footer__dev-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border: 1px solid var(--steel);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+
+.footer__dev-tag:hover {
+  border-color: var(--amber);
+  background: rgba(201, 148, 74, 0.06);
+}
+
+.footer__dev-label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.footer__dev-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  color: var(--amber);
+  text-shadow: 0 0 20px rgba(201, 148, 74, 0.25);
+}

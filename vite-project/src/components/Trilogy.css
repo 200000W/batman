@@ -1,0 +1,152 @@
+/* ===================================================================
+   TRILOGY SECTION
+   =================================================================== */
+
+.trilogy {
+  position: relative;
+  background: var(--abyss);
+  padding: 120px 24px;
+  overflow: hidden;
+}
+
+/* subtle centre radial glow */
+.trilogy__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 50%,
+    rgba(56, 189, 248, 0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* inner wrapper */
+.trilogy__inner {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 1;
+}
+
+/* eyebrow */
+.trilogy__eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 16px;
+}
+
+/* title */
+.trilogy__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  margin: 0 0 20px;
+  line-height: 1.15;
+}
+
+/* description */
+.trilogy__desc {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto 60px;
+}
+
+/* ---- CARD GRID ---- */
+
+.trilogy__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .trilogy__grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+/* ---- CARD ---- */
+
+.trilogy-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 32px 40px;
+  border-radius: 14px;
+  border: 1px solid var(--steel);
+  background: linear-gradient(
+    180deg,
+    var(--gotham-dark) 0%,
+    var(--gotham) 100%
+  );
+  transition:
+    transform 0.45s var(--ease-expo),
+    box-shadow 0.45s var(--ease-expo),
+    border-color 0.45s var(--ease-out);
+  will-change: transform, box-shadow;
+}
+
+.trilogy-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--nolan-blue);
+  box-shadow:
+    0 0 24px var(--nolan-blue-glow),
+    0 16px 48px rgba(0, 0, 0, 0.55);
+}
+
+/* year badge */
+.trilogy-card__year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--nolan-blue);
+  border: 1px solid var(--nolan-blue-dim);
+  border-radius: 999px;
+  padding: 4px 16px;
+  margin-bottom: 20px;
+  background: rgba(56, 189, 248, 0.06);
+  transition: background 0.35s var(--ease-out);
+}
+
+.trilogy-card:hover .trilogy-card__year {
+  background: rgba(56, 189, 248, 0.12);
+}
+
+/* film title */
+.trilogy-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 18px;
+  letter-spacing: 0.03em;
+}
+
+/* quote */
+.trilogy-card__quote {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+}

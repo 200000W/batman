@@ -1,0 +1,172 @@
+/* ───────────────────────────────────────────────
+   Quotes Section — The Words of Gotham
+   ─────────────────────────────────────────────── */
+
+.quotes-section {
+  position: relative;
+  padding: 120px 24px;
+  background: linear-gradient(
+    180deg,
+    var(--abyss) 0%,
+    var(--gotham-dark) 50%,
+    var(--abyss) 100%
+  );
+  overflow: hidden;
+}
+
+/* Subtle noise / atmosphere overlay */
+.quotes-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 50% at 50% 40%,
+    rgba(255, 191, 0, 0.015) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ── Container ─────────────────────────────── */
+
+.quotes-container {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* ── Section Title ─────────────────────────── */
+
+.quotes-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-align: center;
+  margin-bottom: 80px;
+  opacity: 0.85;
+}
+
+/* ── Quote List ────────────────────────────── */
+
+.quotes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* ── Individual Quote Card ─────────────────── */
+
+.quote-card {
+  position: relative;
+  padding: 8px 0 8px 36px;
+  margin: 0;
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(
+    to bottom,
+    var(--amber) 0%,
+    transparent 100%
+  ) 1;
+}
+
+/* Decorative quotation mark */
+.quote-card::before {
+  content: '\201C';                       /* left double quotation mark */
+  position: absolute;
+  top: -18px;
+  left: -6px;
+  font-family: var(--font-display);
+  font-size: 7rem;
+  line-height: 1;
+  color: var(--amber);
+  opacity: 0.12;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Quote Text ────────────────────────────── */
+
+.quote-text {
+  font-family: var(--font-body);
+  font-size: clamp(1.35rem, 2.8vw, 2rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin: 0 0 20px;
+  letter-spacing: 0.01em;
+}
+
+/* ── Attribution ───────────────────────────── */
+
+.quote-attribution {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quote-dash {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--amber-dim);
+  flex-shrink: 0;
+}
+
+.quote-character {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  color: var(--amber);
+  opacity: 0.9;
+}
+
+/* ── Responsive ────────────────────────────── */
+
+@media (max-width: 768px) {
+  .quotes-section {
+    padding: 80px 20px;
+  }
+
+  .quotes-section-title {
+    margin-bottom: 56px;
+  }
+
+  .quotes-list {
+    gap: 56px;
+  }
+
+  .quote-card {
+    padding-left: 24px;
+  }
+
+  .quote-card::before {
+    font-size: 5rem;
+    top: -14px;
+    left: -4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quotes-section {
+    padding: 60px 16px;
+  }
+
+  .quotes-list {
+    gap: 44px;
+  }
+
+  .quote-card {
+    padding-left: 20px;
+  }
+
+  .quote-card::before {
+    font-size: 4rem;
+    top: -10px;
+  }
+}
